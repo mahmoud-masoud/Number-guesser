@@ -71,6 +71,6 @@ document.body.addEventListener('click', (e) => {
     win.style.display = 'none';
     msgEl.innerHTML = '';
     randomNum = getRandomNumber();
-    recognition.start();
+    listening = true;
   }
 });
