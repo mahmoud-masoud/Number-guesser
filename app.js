@@ -20,9 +20,6 @@ function guessedNumber(e) {
   const input = e.results[0][0].transcript;
   showMsg(input);
   checkInput(input);
-  if (isRunning) {
-    recognition.addEventListener('end', () => recognition.start());
-  }
 }
 
 function showMsg(input) {
@@ -43,7 +40,6 @@ function checkInput(input) {
   }
 
   if (num === randomNum) {
-    isRunning = false;
     recognition.stop();
     const h2 = win.querySelector('h2');
     h2.innerHTML = ` Congrats! You have guessed the number! 🎉😎 <br/>
@@ -56,10 +52,11 @@ function checkInput(input) {
   }
 }
 
+recognition.addEventListener('end', () => recognition.start());
+
 document.body.addEventListener('click', (e) => {
   if (e.target.id == 'play-again') {
     win.style.display = 'none';
-    isRunning = true;
     recognition.start();
   }
 });
