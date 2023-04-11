@@ -11,9 +11,10 @@ window.SpeechRecognition =
 
 let recognition = new window.SpeechRecognition();
 
+recognition.addEventListener('end', () => recognition.start());
+
 playBtn.addEventListener('click', () => {
   recognition.start();
-  recognition.addEventListener('end', () => recognition.start());
   recognition.addEventListener('result', guessedNumber);
 });
 
@@ -41,7 +42,7 @@ function checkInput(input) {
   }
 
   if (num === randomNum) {
-    recognition.addEventListener('end', () => recognition.stop());
+    recognition.stop();
     const h2 = win.querySelector('h2');
     h2.innerHTML = ` Congrats! You have guessed the number! 🎉😎 <br/>
     It was ${num}`;
