@@ -33,14 +33,6 @@ p {
   margin-bottom: 50px;
 }
 
-.play-again {
-  padding: 8px 15px;
-  border: 0;
-  background: #f4f4f4;
-  border-radius: 5px;
-  margin-top: 10px;
-}
-
 .msg {
   font-size: 1.5em;
   margin-top: 40px;
@@ -66,4 +58,30 @@ p {
   .mic {
     width: 200px;
   }
+}
+
+.win {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  display: none;
+}
+
+.play-again {
+  padding: 8px 15px;
+  border: 0;
+  background: #ee00ff;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
 }

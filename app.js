@@ -1,5 +1,5 @@
 const msgEl = document.getElementById('msg');
-
+const win = document.querySelector('.win');
 function getRandomNumber() {
   return Math.floor(Math.random() * 101);
 }
@@ -38,11 +38,7 @@ function checkInput(input) {
   }
 
   if (num === randomNum) {
-    document.body.innerHTML = `
-        <h2>Congrats! You have guessed the number! <br><br>
-        It was ${num}</h2>
-        <button class="play-again" id="play-again">Play Again</button>
-      `;
+    win.style.display = 'flex';
   } else if (num > randomNum) {
     msgEl.innerHTML += '<div>GO LOWER</div>';
   } else {
@@ -54,6 +50,8 @@ recognition.addEventListener('end', () => recognition.start());
 
 document.addEventListener('click', (e) => {
   if (e.target.id == 'play-again') {
-    window.location.reload();
+    // window.location.reload();
+    recognition.start();
+    win.style.display = 'none';
   }
 });
