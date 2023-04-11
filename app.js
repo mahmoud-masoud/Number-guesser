@@ -1,9 +1,11 @@
 const msgEl = document.getElementById('msg');
 const win = document.querySelector('.win');
 const playBtn = document.querySelector('.start');
+
 function getRandomNumber() {
   return Math.floor(Math.random() * 101);
 }
+
 let randomNum = getRandomNumber();
 
 window.SpeechRecognition =
@@ -13,9 +15,10 @@ let recognition = new window.SpeechRecognition();
 
 recognition.addEventListener('end', () => recognition.start());
 
+recognition.addEventListener('result', guessedNumber);
+
 playBtn.addEventListener('click', () => {
   recognition.start();
-  recognition.addEventListener('result', guessedNumber);
 });
 
 function guessedNumber(e) {
