@@ -38,7 +38,12 @@ function checkInput(input) {
   }
 
   if (num === randomNum) {
+    const h2 = win.querySelector('h2');
+    h2.innerHTML = ` Congrats! You have guessed the number! 🎉😎 <br/>
+    It was ${num}`;
     win.style.display = 'flex';
+
+    recognition.stop();
   } else if (num > randomNum) {
     msgEl.innerHTML += '<div>GO LOWER</div>';
   } else {
@@ -48,9 +53,8 @@ function checkInput(input) {
 
 recognition.addEventListener('end', () => recognition.start());
 
-document.addEventListener('click', (e) => {
+document.body.addEventListener('click', (e) => {
   if (e.target.id == 'play-again') {
-    // window.location.reload();
     recognition.start();
     win.style.display = 'none';
   }
