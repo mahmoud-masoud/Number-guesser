@@ -21,7 +21,7 @@ function guessedNumber(e) {
 }
 
 function showMsg(input) {
-  `<div>You said:</div>
+  msgEl.innerHTML = `<div>You said:</div>
 <span class="box">${input}</span>`;
 }
 
