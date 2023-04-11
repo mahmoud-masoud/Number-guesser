@@ -24,6 +24,7 @@ recognition.addEventListener('result', guessedNumber);
 
 playBtn.addEventListener('click', () => {
   recognition.start();
+  playBtn.remove();
 });
 
 function guessedNumber(e) {
@@ -55,9 +56,8 @@ function checkInput(input) {
   if (num === randomNum) {
     listening = false;
     recognition.stop();
-    const h2 = win.querySelector('h2');
-    h2.innerHTML = ` Congrats! You have guessed the number! 🎉😎 <br/>
-    It was ${num}`;
+    const span = win.querySelector('span');
+    span.innerText = num;
     win.style.display = 'flex';
   } else if (num > randomNum) {
     msgEl.innerHTML += '<div>GO LOWER</div>';
@@ -71,6 +71,12 @@ function playAgain(e) {
     win.style.display = 'none';
     msgEl.innerHTML = '';
     listening = true;
+    recognition.addEventListener('end', () => {
+      if (listening) {
+        recognition.start();
+      }
+    });
+
     randomNum = getRandomNumber();
     recognition.addEventListener('result', guessedNumber);
     recognition.start();

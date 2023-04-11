@@ -78,6 +78,11 @@ p {
   display: none;
 }
 
+.win span {
+  font-size: 18px;
+  color: #ee00ff;
+}
+
 .play-again,
 .start {
   padding: 8px 15px;
