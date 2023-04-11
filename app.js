@@ -57,6 +57,6 @@ recognition.addEventListener('end', () => recognition.start());
 document.body.addEventListener('click', (e) => {
   if (e.target.id == 'play-again') {
     win.style.display = 'none';
-    recognition.start();
+    msgEl.innerHTML = '';
   }
 });
