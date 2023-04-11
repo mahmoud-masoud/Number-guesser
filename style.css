@@ -75,12 +75,13 @@ p {
   justify-content: center;
   flex-direction: column;
   gap: 10px;
-  display: none;
+  /* display: none; */
 }
 
 .win span {
-  font-size: 18px;
-  color: #ee00ff;
+  font-size: 26px;
+  color: #d0ff00;
+  font-weight: bold;
 }
 
 .play-again,

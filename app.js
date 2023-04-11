@@ -24,7 +24,6 @@ recognition.addEventListener('result', guessedNumber);
 
 playBtn.addEventListener('click', () => {
   recognition.start();
-  playBtn.remove();
 });
 
 function guessedNumber(e) {
