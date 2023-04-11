@@ -66,11 +66,14 @@ function checkInput(input) {
   }
 }
 
-document.body.addEventListener('click', (e) => {
+function playAgain(e) {
   if (e.target.id == 'play-again') {
     win.style.display = 'none';
     msgEl.innerHTML = '';
     randomNum = getRandomNumber();
-    listening = true;
+    recognition.addEventListener('result', guessedNumber);
+    recognition.start();
   }
-});
+}
+
+document.body.addEventListener('click', playAgain);
