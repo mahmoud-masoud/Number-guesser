@@ -1,6 +1,6 @@
 const msgEl = document.getElementById('msg');
 const win = document.querySelector('.win');
-const playBtn = document.querySelector('.play');
+const playBtn = document.querySelector('.start');
 function getRandomNumber() {
   return Math.floor(Math.random() * 101);
 }
