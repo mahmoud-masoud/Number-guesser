@@ -70,6 +70,7 @@ function playAgain(e) {
   if (e.target.id == 'play-again') {
     win.style.display = 'none';
     msgEl.innerHTML = '';
+    listening = true;
     randomNum = getRandomNumber();
     recognition.addEventListener('result', guessedNumber);
     recognition.start();
