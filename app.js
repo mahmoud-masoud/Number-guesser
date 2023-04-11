@@ -1,11 +1,9 @@
 const msgEl = document.getElementById('msg');
 const win = document.querySelector('.win');
 const playBtn = document.querySelector('.start');
-
 function getRandomNumber() {
   return Math.floor(Math.random() * 101);
 }
-
 let randomNum = getRandomNumber();
 
 window.SpeechRecognition =
@@ -15,11 +13,17 @@ let recognition = new window.SpeechRecognition();
 
 recognition.addEventListener('end', () => recognition.start());
 
-recognition.addEventListener('result', guessedNumber);
-
-playBtn.addEventListener('click', () => {
+function startRecognition() {
   recognition.start();
-});
+  recognition.addEventListener('result', guessedNumber);
+}
+
+function stopRecognition() {
+  recognition.removeEventListener('result', guessedNumber);
+  recognition.stop();
+}
+
+startRecognition();
 
 function guessedNumber(e) {
   const input = e.results[0][0].transcript;
@@ -45,7 +49,7 @@ function checkInput(input) {
   }
 
   if (num === randomNum) {
-    recognition.stop();
+    stopRecognition();
     const h2 = win.querySelector('h2');
     h2.innerHTML = ` Congrats! You have guessed the number! 🎉😎 <br/>
     It was ${num}`;
@@ -62,6 +66,6 @@ document.body.addEventListener('click', (e) => {
     win.style.display = 'none';
     msgEl.innerHTML = '';
     randomNum = getRandomNumber();
-    recognition.start();
+    startRecognition();
   }
 });
