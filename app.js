@@ -1,31 +1,35 @@
 const msgEl = document.getElementById('msg');
 const win = document.querySelector('.win');
 const playBtn = document.querySelector('.start');
+
 function getRandomNumber() {
   return Math.floor(Math.random() * 101);
 }
+
 let randomNum = getRandomNumber();
+let listening = true;
 
 window.SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 
 let recognition = new window.SpeechRecognition();
 
-recognition.addEventListener('end', () => recognition.start());
+recognition.addEventListener('end', () => {
+  if (listening) {
+    recognition.start();
+  }
+});
 
-function startRecognition() {
+recognition.addEventListener('result', guessedNumber);
+
+playBtn.addEventListener('click', () => {
   recognition.start();
-  recognition.addEventListener('result', guessedNumber);
-}
-
-function stopRecognition() {
-  recognition.removeEventListener('result', guessedNumber);
-  recognition.stop();
-}
-
-startRecognition();
+});
 
 function guessedNumber(e) {
+  if (!listening) {
+    return;
+  }
   const input = e.results[0][0].transcript;
   showMsg(input);
   checkInput(input);
@@ -49,7 +53,8 @@ function checkInput(input) {
   }
 
   if (num === randomNum) {
-    stopRecognition();
+    listening = false;
+    recognition.stop();
     const h2 = win.querySelector('h2');
     h2.innerHTML = ` Congrats! You have guessed the number! 🎉😎 <br/>
     It was ${num}`;
@@ -66,6 +71,6 @@ document.body.addEventListener('click', (e) => {
     win.style.display = 'none';
     msgEl.innerHTML = '';
     randomNum = getRandomNumber();
-    startRecognition();
+    recognition.start();
   }
 });
