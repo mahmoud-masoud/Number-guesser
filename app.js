@@ -33,7 +33,7 @@ function checkInput(input) {
   }
 
   if (num > 100 || num < 1) {
-    msgEl.innerHTML += '<div>Number must be between 1 and 100</div>';
+    msgEl.innerHTML += '<div>Number must be between <br> 1 and 100</div>';
     return;
   }
 
