@@ -41,7 +41,7 @@ function checkInput(input) {
   }
 
   if (num === randomNum) {
-    recognition.stop();
+    recognition.addEventListener('end', () => recognition.stop());
     const h2 = win.querySelector('h2');
     h2.innerHTML = ` Congrats! You have guessed the number! 🎉😎 <br/>
     It was ${num}`;

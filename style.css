@@ -88,5 +88,5 @@ p {
   font-size: 18px;
   font-weight: bold;
   color: #fff;
-  width: 100px;
+  min-width: 100px;
 }
